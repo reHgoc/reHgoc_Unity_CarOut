@@ -4,27 +4,48 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    float Speed = 2.3f;
+    public float Speed = 2.3f;
+    public float HeightSprite;
+
     Vector2 position;
     Vector2 newPos;
 
-     void Awake()
+    void Awake()
     {
-        position = new Vector2(0f, transform.position.y);
+
+        
+        //position = new Vector2(0f, HeightSprite);
+
+
     }
 
      void Start()
     {
-        
+        HeightSprite = GetComponentInParent<SpriteRenderer>().sprite.rect.height / GetComponentInParent<SpriteRenderer>().sprite.pixelsPerUnit;
+        position = new Vector2(0f, this.transform.position.y);
+        newPos = position;
+
     }
 
     void Update()
     {
-        newPos.y -= Speed * Time.deltaTime;
-        transform.position = new Vector2(0f, newPos.y);
+        //StartCoroutine(MoveRoad());
+        MoveRoad();
+    }
 
-        if (newPos.y < -9.07f)
-            newPos = position;
-        
+    void MoveRoad()
+    {
+        newPos.y -= Speed * Time.deltaTime;
+        this.transform.position = new Vector2(0f, newPos.y);
+
+        if (newPos.y <= -10.24f)
+            newPos.y = HeightSprite;
+
+       
+    }
+
+    void NextRoad()
+    {
+
     }
 }
