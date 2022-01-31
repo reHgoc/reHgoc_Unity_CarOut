@@ -7,15 +7,11 @@ public class Road : MonoBehaviour
     public float Speed = 2.3f;
     public float HeightSprite;
 
-    Vector2 position;
-    Vector2 newPos;
+    public Vector2 position;
+    public Vector2 newPos;
 
     void Awake()
     {
-
-        
-        //position = new Vector2(0f, HeightSprite);
-
 
     }
 
@@ -29,7 +25,6 @@ public class Road : MonoBehaviour
 
     void Update()
     {
-        //StartCoroutine(MoveRoad());
         MoveRoad();
     }
 
@@ -38,14 +33,11 @@ public class Road : MonoBehaviour
         newPos.y -= Speed * Time.deltaTime;
         this.transform.position = new Vector2(0f, newPos.y);
 
-        if (newPos.y <= -10.24f)
+        if (newPos.y <= -HeightSprite)
             newPos.y = HeightSprite;
 
        
     }
 
-    void NextRoad()
-    {
-
-    }
+    
 }

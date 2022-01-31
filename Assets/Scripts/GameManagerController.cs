@@ -8,14 +8,28 @@ public class GameManagerController : MonoBehaviour
 
      void Start()
     {
-        road = GameObject.Find("Road").GetComponent<Road>();
-
-        
-      
+        road = GameObject.FindGameObjectWithTag("Road").GetComponent<Road>();
     }
 
-    private void Update()
+     void Update()
     {
-        //road.gameObject.transform.position = new Vector2(0f, road.transform.position.y - road.Speed * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextRoad();
+        }
+    }
+
+    public void NextRoad()
+    {
+        GameObject next = Resources.Load<GameObject>("Prefabs/2"); // here use arrays game object with road
+        var SpriteRoad = GameObject.FindGameObjectsWithTag("Road");
+
+        foreach(GameObject go in SpriteRoad)
+        {
+          //Invoke this method each need time
+          go.GetComponent<SpriteRenderer>().sprite = next.GetComponent<SpriteRenderer>().sprite;
+
+        }
+        
     }
 }
