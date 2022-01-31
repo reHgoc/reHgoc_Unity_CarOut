@@ -13,10 +13,7 @@ public class GameManagerController : MonoBehaviour
 
      void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NextRoad();
-        }
+        
     }
 
     public void NextRoad()
